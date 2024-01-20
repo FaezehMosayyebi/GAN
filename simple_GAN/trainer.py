@@ -11,7 +11,8 @@ from network import Generator, Discriminator
 
 def GAN_trainer(batch_size, num_epochs, lr):
     # Hyperparameters
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = torch.device("cuda" if torch.cuda.is_available else "cpu")
+    "cuda" if torch.cuda.is_available() else "cpu"
     img_dim = 28 * 28 * 1  # mnist 784
     z_dim = 64
 
@@ -72,7 +73,7 @@ def GAN_trainer(batch_size, num_epochs, lr):
             lossG.backward()
             gen_optim.step()
 
-            if batch_idx == 0:
+            if batch_idx % 100 == 0:
                 print(
                     f"Epoch [ {epoch}/{num_epochs}]\ "
                     f"Loss D: {lossD:.4f}, Loss G: {lossG:.4f}"
