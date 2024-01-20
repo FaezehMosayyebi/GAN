@@ -6,8 +6,7 @@ import torchvision
 import torchvision.datasets as datasets
 import torchvision.transforms as transform
 from torch.utils.tensorboard import SummaryWriter
-from network import Generator, Discriminator
-
+from network import Generator, Discriminator 
 
 def GAN_trainer(batch_size, num_epochs, lr):
     # Hyperparameters
